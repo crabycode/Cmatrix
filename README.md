@@ -1,2 +1,2 @@
 # Cmatrix
-This is a program that does the most basic matrix tasks in C
+This is a program that does the most basic quadratic matrix tasks in C
