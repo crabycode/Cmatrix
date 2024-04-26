@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void matrixInput(int N, int M, int (*Pmatrix)[M]) //Function that inputs numbers into the matrix
 {
@@ -83,6 +84,63 @@ void matrixUnderDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numb
     }
     printf("\n");
 }
+
+bool isMagical(int N, int (*Pmatrix)[N])
+{
+    int sum = 0, tempSum = 0;
+    for (int j = 0; j < N; j++) // Calculate the sum of the first row
+    {
+        sum += Pmatrix[0][j];
+    }
+
+    for (int i = 1; i < N; i++) // Check sums of all rows
+    {
+        tempSum = 0;
+        for (int j = 0; j < N; j++)
+        {
+            tempSum += Pmatrix[i][j];
+        }
+        if (tempSum != sum)
+        {
+            return false;
+        }
+    }
+
+    for (int j = 0; j < N; j++) // Check sums of all columns
+    {
+        tempSum = 0;
+        for (int i = 0; i < N; i++)
+        {
+            tempSum += Pmatrix[i][j];
+        }
+        if (tempSum != sum)
+        {
+            return false;
+        }
+    }
+
+    tempSum = 0;
+    for (int i = 0; i < N; i++) // Check sum of main diagonal
+    {
+        tempSum += Pmatrix[i][i];
+    }
+    if (tempSum != sum)
+    {
+        return false;
+    }
+
+    tempSum = 0;
+    for (int i = 0; i < N; i++) // Check sum of secondary diagonal
+    {
+        tempSum += Pmatrix[i][N-1-i];
+    }
+    if (tempSum != sum)
+    {
+        return false;
+    }
+
+    return true;
+}
 int main() {
     //Initialization
     int N, M;
@@ -97,5 +155,13 @@ int main() {
     matrixReverseDiagonalPrint(N, M, array);
     matrixOverDiagonalPrint(N, M, array);
     matrixUnderDiagonalPrint(N, M, array);
+    if (isMagical(N, array))
+    {
+        printf("The matrix is magical.\n");
+    }
+    else
+    {
+        printf("The matrix is not magical.\n");
+    }
     return 0;
 }
