@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int matrixInput(int N, int M, int (*Pmatrix)[M]) //Function that inputs numbers into the matrix
+void matrixInput(int N, int M, int (*Pmatrix)[M]) //Function that inputs numbers into the matrix
 {
     for(int i = 0; i < N; i++)
     {
@@ -10,10 +10,10 @@ int matrixInput(int N, int M, int (*Pmatrix)[M]) //Function that inputs numbers 
             scanf("%d", &Pmatrix[i][j]);
         }
     }
-    return 0;
+    printf("\n");
 }
 
-int matrixPrint(int N, int M, int (*Pmatrix)[M]) //Function that prints the numbers from the matrix
+void matrixPrint(int N, int M, int (*Pmatrix)[M]) //Function that prints the numbers from the matrix
 {
     for(int i = 0; i < N; i++)
     {
@@ -23,9 +23,10 @@ int matrixPrint(int N, int M, int (*Pmatrix)[M]) //Function that prints the numb
         }
         printf("\n");
     }
+    printf("\n");
 }
 
-int matrixDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that finds the main diagonal
+void matrixDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that finds the main diagonal
 {
     printf("Main Diagonal: ");
     for(int i = 0; i< N; i++)
@@ -38,10 +39,10 @@ int matrixDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that finds t
             }
         }
     }
-    return 0;
+    printf("\n");
 }
 
-int matrixReverseDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that finds the reverse diagonal
+void matrixReverseDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that finds the reverse diagonal
 {
     printf("Reverse Diagonal: ");
     for(int i = 0; i< N; i++)
@@ -54,10 +55,10 @@ int matrixReverseDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Function that 
             }
         }
     }
-    return 0;
+    printf("\n");
 }
 
-int matrixOverDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numbers over the diagonal of the matrix
+void matrixOverDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numbers over the diagonal of the matrix
 {
     printf("Elements above Main Diagonal: ");
     for(int i = 0; i<N; i++)
@@ -67,10 +68,10 @@ int matrixOverDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the number
             printf("%d ", Pmatrix[i][j]);
         }
     }
-    return 0;
+    printf("\n");
 }
 
-int matrixUnderDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numbers under the diagonal of the matrix
+void matrixUnderDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numbers under the diagonal of the matrix
 {
     printf("Elements under Main Diagonal: ");
     for(int i = 1; i<N; i++) // Starts from the second row
@@ -80,21 +81,21 @@ int matrixUnderDiagonalPrint(int N, int M, int (*Pmatrix)[M]) //Prints the numbe
             printf("%d ", Pmatrix[i][j]);
         }
     }
-    return 0;
+    printf("\n");
 }
 int main() {
     //Initialization
-    int N = 3, M = 3;
+    int N, M;
+    printf("Please enter dimension N: ");
+    scanf("%d", &N);
+    printf("Please enter dimension M: ");
+    scanf("%d", &M);
     int array[N][M];
     matrixInput(N, M, array);
     matrixPrint(N, M, array);
-    printf("\n");
     matrixDiagonalPrint(N, M, array);
-    printf("\n");
     matrixReverseDiagonalPrint(N, M, array);
-    printf("\n");
     matrixOverDiagonalPrint(N, M, array);
-    printf("\n");
     matrixUnderDiagonalPrint(N, M, array);
     return 0;
 }
